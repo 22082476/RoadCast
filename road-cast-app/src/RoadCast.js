@@ -1,12 +1,31 @@
 import DataCircle from './DataCircle';
-
+import { useEffect, useState } from "react";
 
 export default function RoadCast() {
+    const [data, setData] = useState(null);
+
+    useEffect(() => {
+        fetch("https://8sw2jpc8s8.execute-api.eu-central-1.amazonaws.com/default/motor-radar-api")
+            .then(res => res.json())
+            .then(setData)
+            .catch(console.error);
+    }, []);
+
+    console.log(data);
+
+    if (!data) {
+        return <p>Loading...</p>; // or a spinner
+    }
+
+    let sunrise = data.sunrise.split('T')[1]
+    let sunset = data.sunset.split('T')[1]
+
     return (
         <>
-            <DataCircle main={"21\u00B0"} second={"17\u00B0"}/>
-            {/* <DataCircle main={"main"} second={"second"}/> */}
+            <DataCircle main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
+            <DataCircle main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
+            <DataCircle main={data.max_visibility + " m"} second={data.min_visibility + " m"} />
+            <DataCircle main={sunrise} second={sunset} />
         </>
-        
     );
 }
