@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  # Development mode
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roadcast-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/road-cast-app
+      - /road-cast-app/node_modules
+    environment:
+      NODE_ENV: development
+    command: ["npm", "start", "--", "--host", "0.0.0.0"]
+
+  # Deploy (staging-like) mode
+  deploy:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roadcast-deploy
+    ports:
+      - "3001:3000"
+    environment:
+      NODE_ENV: deploy
+      GH_TOKEN: ${GH_TOKEN}   # <-- GitHub token from host or .env
+    command: >
+      sh -c "npm run build && npm run deploy"
+
+  # Production mode
+  prod:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: roadcast-prod
+    ports:
+      - "3002:3000"
+    environment:
+      NODE_ENV: production
+    command: >
+      sh -c "npm run build"
