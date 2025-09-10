@@ -14,10 +14,11 @@ jobs:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 
     steps:
-      # Checkout repo
+      
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Build Docker image
       - name: Build Docker compose
-        run: docker compose up deploy 
+        run: |
+            cd road-cast-app
+            docker compose up deploy 
