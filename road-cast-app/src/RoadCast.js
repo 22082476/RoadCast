@@ -19,8 +19,6 @@ export default function RoadCast() {
         return <p>Loading...</p>;
     }
 
-    console.log(data)
-
     let sunriseSunset = getSunsetRise(data);
     let visibilityIcon = getVisibilityIcon(data);
     let precipitation = getPrecipitation(data);
