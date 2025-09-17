@@ -7,7 +7,7 @@ export default function DataCircle({main, second}) {
         <h1 className='circle-header'>
           {main}
         </h1>
-        <h2>
+        <h2 className='second-text'>
           {second}
         </h2>
       </div>
