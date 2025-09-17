@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/RoadCast/static/css/main.630aa718.css",
-    "main.js": "/RoadCast/static/js/main.9e189f42.js",
+    "main.css": "/RoadCast/static/css/main.b5649116.css",
+    "main.js": "/RoadCast/static/js/main.d828731f.js",
     "static/js/453.db1ce9a4.chunk.js": "/RoadCast/static/js/453.db1ce9a4.chunk.js",
+    "static/media/thermometer-celsius.svg": "/RoadCast/static/media/thermometer-celsius.6997f5852f3d55076b9a1fcf03ee2492.svg",
     "index.html": "/RoadCast/index.html",
     "static/media/compass.svg": "/RoadCast/static/media/compass.a75be118066aae59fd5c7104206d1adb.svg",
-    "main.630aa718.css.map": "/RoadCast/static/css/main.630aa718.css.map",
-    "main.9e189f42.js.map": "/RoadCast/static/js/main.9e189f42.js.map",
+    "static/media/wind.svg": "/RoadCast/static/media/wind.7a4b20897f6d540644a3d20b54330098.svg",
+    "main.b5649116.css.map": "/RoadCast/static/css/main.b5649116.css.map",
+    "main.d828731f.js.map": "/RoadCast/static/js/main.d828731f.js.map",
     "453.db1ce9a4.chunk.js.map": "/RoadCast/static/js/453.db1ce9a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.630aa718.css",
-    "static/js/main.9e189f42.js"
+    "static/css/main.b5649116.css",
+    "static/js/main.d828731f.js"
   ]
 }
