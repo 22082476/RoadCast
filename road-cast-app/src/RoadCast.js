@@ -1,4 +1,5 @@
 import DataCircle from './DataCircle';
+import RoadCastHeader from './RoadCastHeader';
 import { useEffect, useState } from "react";
 
 export default function RoadCast() {
@@ -11,10 +12,8 @@ export default function RoadCast() {
             .catch(console.error);
     }, []);
 
-    console.log(data);
-
     if (!data) {
-        return <p>Loading...</p>; // or a spinner
+        return <p>Loading...</p>;
     }
 
     let sunrise = data.sunrise.split('T')[1]
@@ -22,6 +21,7 @@ export default function RoadCast() {
 
     return (
         <>
+            <RoadCastHeader />
             <DataCircle main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
             <DataCircle main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
             <DataCircle main={data.max_visibility + " m"} second={data.min_visibility + " m"} />

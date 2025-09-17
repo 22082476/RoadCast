@@ -1,0 +1,27 @@
+.app-header {
+    padding: 1rem;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-subheader {
+    padding: 0.5rem;
+    color: #e5e7eb;
+    text-align: center;
+}
+
+.app-location {
+    font-weight: bold;
+    font-style:oblique;
+}
+
+.app-header-icon
+{
+    width: 5rem;
+    height: 5rem;
+    margin-left: 1rem;
+    rotate: 20deg;
+}

@@ -14,6 +14,7 @@ services:
       - /road-cast-app/node_modules
     environment:
       NODE_ENV: development
+      GH_TOKEN: "Token-test"
     command: ["npm", "start", "--", "--host", "0.0.0.0"]
 
   # Deploy (staging-like) mode
