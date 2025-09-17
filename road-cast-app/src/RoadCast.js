@@ -1,6 +1,8 @@
 import DataCircle from './DataCircle';
 import RoadCastHeader from './RoadCastHeader';
 import { useEffect, useState } from "react";
+import TempIcon from './icons/thermometer-celsius.svg';
+import WindIcon from './icons/wind.svg';
 
 export default function RoadCast() {
     const [data, setData] = useState(null);
@@ -22,8 +24,8 @@ export default function RoadCast() {
     return (
         <>
             <RoadCastHeader />
-            <DataCircle main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
-            <DataCircle main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
+            <DataCircle img={TempIcon} main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
+            <DataCircle img={WindIcon} main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
             <DataCircle main={data.max_visibility + " m"} second={data.min_visibility + " m"} />
             <DataCircle main={sunrise} second={sunset} />
         </>
