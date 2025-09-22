@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RoadCast/static/css/main.b5649116.css",
-    "main.js": "/RoadCast/static/js/main.3754b07c.js",
+    "main.js": "/RoadCast/static/js/main.368d4d5a.js",
     "static/js/453.db1ce9a4.chunk.js": "/RoadCast/static/js/453.db1ce9a4.chunk.js",
     "static/media/snow.svg": "/RoadCast/static/media/snow.eb7fdb70238bc7c80743195cdf6581c0.svg",
     "static/media/thermometer-celsius.svg": "/RoadCast/static/media/thermometer-celsius.6997f5852f3d55076b9a1fcf03ee2492.svg",
@@ -19,11 +19,11 @@
     "static/media/clear-day.svg": "/RoadCast/static/media/clear-day.4c82810e685aca17144a40289b509a6c.svg",
     "static/media/cloudy.svg": "/RoadCast/static/media/cloudy.7d9598f687a0c83c6b7a127ea911c4f2.svg",
     "main.b5649116.css.map": "/RoadCast/static/css/main.b5649116.css.map",
-    "main.3754b07c.js.map": "/RoadCast/static/js/main.3754b07c.js.map",
+    "main.368d4d5a.js.map": "/RoadCast/static/js/main.368d4d5a.js.map",
     "453.db1ce9a4.chunk.js.map": "/RoadCast/static/js/453.db1ce9a4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.b5649116.css",
-    "static/js/main.3754b07c.js"
+    "static/js/main.368d4d5a.js"
   ]
 }
