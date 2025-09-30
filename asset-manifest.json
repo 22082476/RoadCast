@@ -1,8 +1,9 @@
 {
   "files": {
-    "main.css": "/RoadCast/static/css/main.b5649116.css",
-    "main.js": "/RoadCast/static/js/main.368d4d5a.js",
+    "main.css": "/RoadCast/static/css/main.a066f51f.css",
+    "main.js": "/RoadCast/static/js/main.93dd5089.js",
     "static/js/453.db1ce9a4.chunk.js": "/RoadCast/static/js/453.db1ce9a4.chunk.js",
+    "static/media/sleet.svg": "/RoadCast/static/media/sleet.3b263dd337eb26d203a9afca9ac76634.svg",
     "static/media/snow.svg": "/RoadCast/static/media/snow.eb7fdb70238bc7c80743195cdf6581c0.svg",
     "static/media/thermometer-celsius.svg": "/RoadCast/static/media/thermometer-celsius.6997f5852f3d55076b9a1fcf03ee2492.svg",
     "static/media/drizzle.svg": "/RoadCast/static/media/drizzle.9adc3cfd61e154d209332c995bd581aa.svg",
@@ -18,12 +19,12 @@
     "static/media/wind.svg": "/RoadCast/static/media/wind.7a4b20897f6d540644a3d20b54330098.svg",
     "static/media/clear-day.svg": "/RoadCast/static/media/clear-day.4c82810e685aca17144a40289b509a6c.svg",
     "static/media/cloudy.svg": "/RoadCast/static/media/cloudy.7d9598f687a0c83c6b7a127ea911c4f2.svg",
-    "main.b5649116.css.map": "/RoadCast/static/css/main.b5649116.css.map",
-    "main.368d4d5a.js.map": "/RoadCast/static/js/main.368d4d5a.js.map",
+    "main.a066f51f.css.map": "/RoadCast/static/css/main.a066f51f.css.map",
+    "main.93dd5089.js.map": "/RoadCast/static/js/main.93dd5089.js.map",
     "453.db1ce9a4.chunk.js.map": "/RoadCast/static/js/453.db1ce9a4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b5649116.css",
-    "static/js/main.368d4d5a.js"
+    "static/css/main.a066f51f.css",
+    "static/js/main.93dd5089.js"
   ]
 }
