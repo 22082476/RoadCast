@@ -3,7 +3,8 @@ import RoadCastHeader from './RoadCastHeader';
 import { useEffect, useState } from "react";
 import TempIcon from './icons/thermometer-celsius.svg';
 import WindIcon from './icons/wind.svg';
-import { getSunsetRise, getPrecipitation, getVisibilityIcon } from './RoadCastFunctions';
+import { getSunsetRise, getPrecipitation, getVisibilityIcon, getWeatherSummary } from './RoadCastFunctions';
+import RoadCastTextField from './RoadCastTextField';
 
 export default function RoadCast() {
     const [data, setData] = useState(null);
@@ -19,6 +20,7 @@ export default function RoadCast() {
         return <p>Loading...</p>;
     }
 
+    let summary = getWeatherSummary(data);
     let sunriseSunset = getSunsetRise(data);
     let visibilityIcon = getVisibilityIcon(data);
     let precipitation = getPrecipitation(data);
@@ -26,6 +28,7 @@ export default function RoadCast() {
     return (
         <>
             <RoadCastHeader />
+            <RoadCastTextField text={summary} />
             <DataCircle img={TempIcon} main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
             <DataCircle img={WindIcon} main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
             <DataCircle img={visibilityIcon} main={data.min_visibility + " m"} second={""} />
