@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/RoadCast/static/css/main.6040376d.css",
-    "main.js": "/RoadCast/static/js/main.e0ae6904.js",
+    "main.js": "/RoadCast/static/js/main.596ae196.js",
     "static/js/453.db1ce9a4.chunk.js": "/RoadCast/static/js/453.db1ce9a4.chunk.js",
     "static/media/sleet.svg": "/RoadCast/static/media/sleet.3b263dd337eb26d203a9afca9ac76634.svg",
     "static/media/snow.svg": "/RoadCast/static/media/snow.eb7fdb70238bc7c80743195cdf6581c0.svg",
@@ -20,11 +20,11 @@
     "static/media/clear-day.svg": "/RoadCast/static/media/clear-day.4c82810e685aca17144a40289b509a6c.svg",
     "static/media/cloudy.svg": "/RoadCast/static/media/cloudy.7d9598f687a0c83c6b7a127ea911c4f2.svg",
     "main.6040376d.css.map": "/RoadCast/static/css/main.6040376d.css.map",
-    "main.e0ae6904.js.map": "/RoadCast/static/js/main.e0ae6904.js.map",
+    "main.596ae196.js.map": "/RoadCast/static/js/main.596ae196.js.map",
     "453.db1ce9a4.chunk.js.map": "/RoadCast/static/js/453.db1ce9a4.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.6040376d.css",
-    "static/js/main.e0ae6904.js"
+    "static/js/main.596ae196.js"
   ]
 }
