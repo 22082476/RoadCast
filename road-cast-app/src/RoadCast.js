@@ -30,10 +30,10 @@ export default function RoadCast() {
             <RoadCastHeader />
             <RoadCastTextField text={summary} />
             <DataCircle img={TempIcon} main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
+            <DataCircle img={precipitation.img} main={precipitation.data} second={""} />
             <DataCircle img={WindIcon} main={data.wind_gusts + " km/h"} second={data.wind_speed + " km/h"} />
             <DataCircle img={visibilityIcon} main={data.min_visibility + " m"} second={""} />
             <DataCircle img={sunriseSunset.img} main={sunriseSunset.main} second={sunriseSunset.second} />
-            <DataCircle img={precipitation.img} main={precipitation.data} second={""} />
         </>
     );
 }

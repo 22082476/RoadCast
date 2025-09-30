@@ -2,5 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    color: #e5e7eb;
+    text-align: center;
+    text-overflow: clip;
 }
