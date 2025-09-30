@@ -79,21 +79,26 @@ export function getVisibilityIcon(data) {
 
 
 const rules = [
-    [(temp, vis, rain, showers, snow) => temp <= 5 && (rain || showers), "Cold and wet, drive carefully."],
-    [(temp, vis, rain, showers, snow) => temp <= 0 && snow, "Snowy and freezing. Expect icy conditions, Not recommend to drive."],
-    [(temp, vis, rain, showers, snow) => snow > 0, "Snow expected. Not recommend to drive."],
-    [(temp, vis, rain, showers, snow) => temp  <= 4, "Cold weather expected. Drive carefully."],
-    [(temp, vis, rain, showers, snow) => (rain > 0 && rain < 25) || (showers > 0 && showers < 25), "Light rain expected."],
-    [(temp, vis, rain, showers, snow) => rain >= 25 || showers >= 25, "Heavy rain expected. Drive carefully."],
-    [(temp, vis, rain, showers, snow) => vis <= 50, "Dense fog. Not recommend to drive."],
-    [(temp, vis, rain, showers, snow) => vis < 1000, "Foggy conditions, drive carefully."],
-    [(temp, vis, rain, showers, snow) => temp >= 20 && !(rain || showers || snow), "Sunny and warm. Perfect to ride!"],
-    [(temp, vis, rain, showers, snow) => true, "Mild weather with no significant hazards."]
+    // stormy
+    [(temp, vis, rain, showers, snow, wind_gusts) => ((rain >= 20 || showers >= 20 || snow >= 10) && wind_gusts >= 65) , "Stormy weather conditions. Not recommend to drive."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => temp <= 5 && (rain || showers), "Cold and wet, drive carefully."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => temp <= 0 && snow, "Snowy and freezing. Expect icy conditions, Not recommend to drive."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => snow > 0, "Snow expected. Not recommend to drive."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => temp  <= 4, "Cold weather expected. Drive carefully."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => (rain > 0 && rain < 25) || (showers > 0 && showers < 25), "Light rain expected."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => rain >= 25 || showers >= 25, "Heavy rain expected. Drive carefully."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => vis <= 50, "Dense fog. Not recommend to drive."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => vis < 1000, "Foggy conditions, drive carefully."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => wind_gusts < 65, "Extreme wind conditions. Not recommend to drive."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => wind_gusts >= 50, "High winds expected. Drive carefully."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => wind_gusts >= 30, "Windy conditions."],
+    [(temp, vis, rain, showers, snow, wind_gusts) => temp >= 20 && !(rain || showers || snow), "Sunny and warm. Perfect to ride!"],
+    [(temp, vis, rain, showers, snow, wind_gusts) => true, "Mild weather with no significant hazards."]
 ];
 
 export function getWeatherSummary(data) {
     for (const [condition, message] of rules) {
-        if (condition(data.min_temp, data.min_visibility, data.rain, data.showers, data.snow)) {
+        if (condition(data.min_temp, data.min_visibility, data.rain, data.showers, data.snow, data.wind_gusts)) {
             return message;
         }
     }
