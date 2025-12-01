@@ -5,11 +5,13 @@ import TempIcon from './icons/thermometer-celsius.svg';
 import WindIcon from './icons/wind.svg';
 import { getSunsetRise, getPrecipitation, getVisibilityIcon, getWeatherSummary } from './RoadCastFunctions';
 import RoadCastTextField from './RoadCastTextField';
+import Maintenance from './Maintenance';
 
 export default function RoadCast() {
     const [data, setData] = useState(null);
     const [day, setDay] = useState(0); // 0 for Today, 1 for Tomorrow
     const [isLoading, setIsLoading] = useState(false);
+    const [currentView, setCurrentView] = useState('weather'); // 'weather' or 'maintenance'
 
     useEffect(() => {
         setIsLoading(true);
@@ -25,10 +27,21 @@ export default function RoadCast() {
             });
     }, [day]);
 
-    if (!data) {
+    if (!data && currentView === 'weather') {
         return <p>Loading...</p>;
     }
 
+    // Show maintenance view
+    if (currentView === 'maintenance') {
+        return (
+            <>
+                <RoadCastHeader day={day} setDay={setDay} isLoading={isLoading} currentView={currentView} setCurrentView={setCurrentView} />
+                <Maintenance />
+            </>
+        );
+    }
+
+    // Show weather view
     let summary = getWeatherSummary(data);
     let sunriseSunset = getSunsetRise(data, day);
     let visibilityIcon = getVisibilityIcon(data);
@@ -36,7 +49,7 @@ export default function RoadCast() {
 
     return (
         <>
-            <RoadCastHeader day={day} setDay={setDay} isLoading={isLoading} />
+            <RoadCastHeader day={day} setDay={setDay} isLoading={isLoading} currentView={currentView} setCurrentView={setCurrentView} />
             <RoadCastTextField text={summary} />
             <DataCircle img={TempIcon} main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
             <DataCircle img={precipitation.img} main={precipitation.data} second={""} />
