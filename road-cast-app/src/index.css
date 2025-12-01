@@ -12,3 +12,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* Option 1: Modern Pill Toggle - Refined */
+.day-selector-pill {
+  display: flex;
+  justify-content: center;
+  margin: 15px auto 25px auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  /* More subtle background */
+  padding: 4px;
+  border-radius: 30px;
+  width: fit-content;
+  backdrop-filter: blur(5px);
+  /* Glassmorphism effect */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.day-selector-pill button {
+  background: none;
+  border: none;
+  color: #aaa;
+  padding: 6px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.day-selector-pill button:hover {
+  color: #fff;
+}
+
+.day-selector-pill button.active {
+  background-color: rgba(255, 255, 255, 0.2);
+  /* Subtle active state */
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.day-selector-pill button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.day-selector-pill.loading {
+  opacity: 0.7;
+}

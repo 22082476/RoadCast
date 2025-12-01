@@ -8,26 +8,35 @@ import RoadCastTextField from './RoadCastTextField';
 
 export default function RoadCast() {
     const [data, setData] = useState(null);
+    const [day, setDay] = useState(0); // 0 for Today, 1 for Tomorrow
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
-        fetch("https://8sw2jpc8s8.execute-api.eu-central-1.amazonaws.com/default/motor-radar-api")
+        setIsLoading(true);
+        fetch(`https://8sw2jpc8s8.execute-api.eu-central-1.amazonaws.com/default/motor-radar-api?day=${day}`)
             .then(res => res.json())
-            .then(setData)
-            .catch(console.error);
-    }, []);
+            .then(newData => {
+                setData(newData);
+                setIsLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setIsLoading(false);
+            });
+    }, [day]);
 
     if (!data) {
         return <p>Loading...</p>;
     }
 
     let summary = getWeatherSummary(data);
-    let sunriseSunset = getSunsetRise(data);
+    let sunriseSunset = getSunsetRise(data, day);
     let visibilityIcon = getVisibilityIcon(data);
     let precipitation = getPrecipitation(data);
 
     return (
         <>
-            <RoadCastHeader />
+            <RoadCastHeader day={day} setDay={setDay} isLoading={isLoading} />
             <RoadCastTextField text={summary} />
             <DataCircle img={TempIcon} main={data.min_temp + "\u00B0"} second={data.max_temp + "\u00B0"} />
             <DataCircle img={precipitation.img} main={precipitation.data} second={""} />

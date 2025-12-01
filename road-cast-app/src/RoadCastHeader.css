@@ -16,7 +16,7 @@
     color: #e5e7eb;
     text-align: center;
     display: flex;
-    justify-content: center;    
+    justify-content: center;
     align-items: center;
     height: 10rem;
     width: auto;
@@ -26,11 +26,10 @@
 .app-location {
     margin: auto;
     font-weight: bold;
-    font-style:oblique;
+    font-style: oblique;
 }
 
-.app-header-icon
-{
+.app-header-icon {
     width: 5rem;
     height: 5rem;
     margin-left: 1rem;
