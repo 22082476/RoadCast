@@ -27,7 +27,6 @@ export function getPrecipitation(data) {
 
 
 export function getSunsetRise(data, day) {
-    console.log(day);
     let sunrise = data.sunrise.split('T')[1];
     let sunset = data.sunset.split('T')[1];
 
