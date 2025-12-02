@@ -27,7 +27,7 @@ export function getPrecipitation(data) {
 
 
 export function getSunsetRise(data, day) {
-
+    console.log(day);
     let sunrise = data.sunrise.split('T')[1];
     let sunset = data.sunset.split('T')[1];
 
@@ -45,17 +45,11 @@ export function getSunsetRise(data, day) {
     };
 
     let sunriseMinutes = toMinutes(sunrise);
-    let sunsetMinutes = toMinutes(sunset);
 
-    // Calculate distance to sunrise and sunset
-    // We use Math.abs to find the closest event in time on the clock face
-    let distSunrise = Math.abs(currentMinutes - sunriseMinutes);
-    let distSunset = Math.abs(currentMinutes - sunsetMinutes);
-
-    if (distSunrise <= distSunset) {
-        return { img: SunriseIcon, main: sunrise, second: sunset };
-    } else {
+    if (currentMinutes > sunriseMinutes) {
         return { img: SunsetIcon, main: sunset, second: sunrise };
+    } else {
+        return { img: SunriseIcon, main: sunrise, second: sunset };
     }
 }
 
