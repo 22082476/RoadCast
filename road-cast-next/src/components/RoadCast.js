@@ -1,8 +1,9 @@
+'use client';
 import DataCircle from './DataCircle';
 import RoadCastHeader from './RoadCastHeader';
 import { useEffect, useState } from "react";
-import TempIcon from './icons/thermometer-celsius.svg';
-import WindIcon from './icons/wind.svg';
+const TempIcon = '/icons/thermometer-celsius.svg';
+const WindIcon = '/icons/wind.svg';
 import { getSunsetRise, getPrecipitation, getVisibilityIcon, getWeatherSummary } from './RoadCastFunctions';
 import RoadCastTextField from './RoadCastTextField';
 import Maintenance from './Maintenance';
@@ -15,6 +16,7 @@ export default function RoadCast() {
 
     useEffect(() => {
         setIsLoading(true);
+        console.log(`https://roadcast-api.vercel.app?day=${day}`)
         fetch(`https://roadcast-api.vercel.app?day=${day}`)
             .then(res => res.json())
             .then(newData => {
