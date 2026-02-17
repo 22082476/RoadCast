@@ -16,7 +16,6 @@ export default function RoadCast() {
 
     useEffect(() => {
         setIsLoading(true);
-        console.log(`https://roadcast-api.vercel.app?day=${day}`)
         fetch(`https://roadcast-api.vercel.app?day=${day}`)
             .then(res => res.json())
             .then(newData => {
