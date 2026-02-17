@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Maintenance.css';
-
-import { SprayCan, Gauge, Fuel, Droplets, Motorbike, Wrench } from 'lucide-react';
+import { SprayCan, Gauge, Fuel, Droplets, Motorbike, Wrench, Download, Upload } from 'lucide-react';
 
 export default function Maintenance() {
-    const [entries, setEntries] = useState(() => {
-        const saved = localStorage.getItem('maintenanceEntries');
-        return saved ? JSON.parse(saved) : [];
-    });
+    const [entries, setEntries] = useState([]);
 
     const [taskType, setTaskType] = useState('chain');
     const [km, setKm] = useState('');
@@ -16,11 +12,14 @@ export default function Maintenance() {
     const [description, setDescription] = useState('');
 
     useEffect(() => {
-        if (entries.length > 0 && km === '') {
-            const lastEntry = entries[0];
-            setKm(lastEntry.km.toString());
+        const saved = localStorage.getItem('maintenanceEntries');
+        if (saved) {
+            const parsedEntries = JSON.parse(saved);
+            setEntries(parsedEntries);
+            if (parsedEntries.length > 0) {
+                setKm(parsedEntries[0].km.toString());
+            }
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const taskTypes = {
@@ -69,12 +68,74 @@ export default function Maintenance() {
         });
     };
 
+    const exportData = () => {
+        const dataStr = JSON.stringify(entries, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `maintenance-data-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
+
+    const importData = (event) => {
+        const file = event.target.files?.[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            try {
+                const importedData = JSON.parse(e.target.result);
+                if (Array.isArray(importedData)) {
+                    setEntries(importedData);
+                    localStorage.setItem('maintenanceEntries', JSON.stringify(importedData));
+                    alert(`Successfully imported ${importedData.length} entries!`);
+                } else {
+                    alert('Invalid file format. Please select a valid maintenance data file.');
+                }
+            } catch (error) {
+                alert('Error reading file. Please select a valid JSON file.');
+                console.error('Import error:', error);
+            }
+        };
+        reader.readAsText(file);
+    };
+
     return (
         <div className="maintenance-container">
             <h1 className="maintenance-title">
                 Motorcycle Maintenance
                 <Motorbike size={32} strokeWidth={2} style={{ display: 'inline-block', marginRight: '10px', verticalAlign: 'middle' }} />
             </h1>
+
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '10px', marginBottom: '20px' }}>
+                <button
+                    type="button"
+                    onClick={exportData}
+                    className="btn-add"
+                    style={{ width: 'auto', display: 'flex', alignItems: 'center', gap: '8px' }}
+                    disabled={entries.length === 0}
+                >
+                    <Download size={20} />
+                    Export Data
+                </button>
+                <label
+                    className="btn-add"
+                    style={{ width: 'auto', display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', margin: 0 }}
+                >
+                    <Upload size={20} />
+                    Import Data
+                    <input
+                        type="file"
+                        accept=".json"
+                        onChange={importData}
+                        style={{ display: 'none' }}
+                    />
+                </label>
+            </div>
 
             <form className="maintenance-form" onSubmit={handleSubmit}>
                 <div className="form-group">
@@ -177,7 +238,7 @@ export default function Maintenance() {
                                         )}
                                         {entry.description && (
                                             <span className="entry-description">{entry.description}</span>
-                                        )} 
+                                        )}
                                     </div>
                                 </div>
                             );
